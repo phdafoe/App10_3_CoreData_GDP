@@ -11,6 +11,8 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     var window: UIWindow?
 
@@ -43,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    
+    
+    func getAllDataContratos() -> NSArray{
+        
+        let fetchRequest = NSFetchRequest()
+        let entity : NSEntityDescription = NSEntityDescription.entityForName("Contratos",
+            inManagedObjectContext: self.managedObjectContext)!
+        
+        fetchRequest.entity = entity
+        let fetchContratos : NSArray = try! managedObjectContext.executeFetchRequest(fetchRequest)
+        return fetchContratos
+    }
+    
 
     // MARK: - Core Data stack
 
@@ -106,6 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    
+    
+   
 
 }
 
